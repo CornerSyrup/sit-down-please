@@ -1,6 +1,13 @@
 import glob
 import time
 
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BCM)
+
+IR_PIN = 18
+GPIO.setup(IR_PIN, GPIO.PIN)
+
 
 def load_modules(group: str):
     return map(
@@ -15,7 +22,13 @@ def load_modules(group: str):
 last_sec = int(time.time())
 curr_sec = 0
 
+is_occupied = False
+now_occupied = False
+
 monitors = load_modules("monitors")
+
+for mon in monitors:
+    mon.install()
 
 while True:
     last_sec = curr_sec
@@ -23,3 +36,12 @@ while True:
 
     if last_sec == curr_sec:
         continue
+
+    now_occupied = bool(GPIO.input(IR_PIN))
+    if is_occupied != now_occupied:
+        if now_occupied:
+            for mon in monitors:
+                mon.on_occupied()
+        else:
+            for mon in monitors:
+                mon.on_available()
