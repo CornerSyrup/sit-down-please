@@ -10,12 +10,14 @@ GPIO.setup(IR_PIN, GPIO.IN)
 
 
 def load_modules(group: str):
-    return map(
-        lambda module: getattr(__import__(f"{group}.{module}"), module),
+    return list(
         map(
-            lambda path: path.replace("\\", ".").replace("/", ".").split(".")[1],
-            glob.glob(f"{group}/*.py"),
-        ),
+            lambda module: getattr(__import__(f"{group}.{module}"), module),
+            map(
+                lambda path: path.replace("\\", ".").replace("/", ".").split(".")[1],
+                glob.glob(f"{group}/*.py"),
+            ),
+        )
     )
 
 
@@ -36,7 +38,7 @@ while True:
 
     if last_sec != curr_sec:
         for mon in monitors:
-            if "on_second" in mon:
+            if "on_second" in dir(mon):
                 mon.on_second(curr_sec)
 
     now_occupied = bool(GPIO.input(IR_PIN))
@@ -45,9 +47,9 @@ while True:
 
         if now_occupied:
             for mon in monitors:
-                if "on_occupied" in mon:
+                if "on_occupied" in dir(mon):
                     mon.on_occupied()
         else:
             for mon in monitors:
-                if "on_available" in mon:
+                if "on_available" in dir(mon):
                     mon.on_available()
