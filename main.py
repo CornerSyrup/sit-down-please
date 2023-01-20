@@ -41,6 +41,8 @@ while True:
 
     now_occupied = bool(GPIO.input(IR_PIN))
     if is_occupied != now_occupied:
+        is_occupied = now_occupied
+
         if now_occupied:
             for mon in monitors:
                 if "on_occupied" in mon:
