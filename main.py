@@ -6,7 +6,7 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
 
 IR_PIN = 18
-GPIO.setup(IR_PIN, GPIO.PIN)
+GPIO.setup(IR_PIN, GPIO.IN)
 
 
 def load_modules(group: str):
