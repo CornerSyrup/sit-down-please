@@ -34,14 +34,18 @@ while True:
     last_sec = curr_sec
     curr_sec = int(time.time())
 
-    if last_sec == curr_sec:
-        continue
+    if last_sec != curr_sec:
+        for mon in monitors:
+            if "on_second" in mon:
+                mon.on_second(curr_sec)
 
     now_occupied = bool(GPIO.input(IR_PIN))
     if is_occupied != now_occupied:
         if now_occupied:
             for mon in monitors:
-                mon.on_occupied()
+                if "on_occupied" in mon:
+                    mon.on_occupied()
         else:
             for mon in monitors:
-                mon.on_available()
+                if "on_available" in mon:
+                    mon.on_available()
