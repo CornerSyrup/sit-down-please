@@ -1,0 +1,10 @@
+pies:
+  hosts:
+    ubuntu:
+      ansible_host: localhost
+      ansible_user: ansible
+      ansible_connection: local
+      ansible_become_pass: ths95049
+      src_repo: /mnt/m/GitHub/sit-down-please
+      deploy_dest: ~/sit-down-please
+      # deploy_version: latest-dev
