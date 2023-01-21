@@ -1,17 +1,23 @@
+from typing import Iterable
+
 import RPi.GPIO as GPIO
+
+from core import Monitor, Trigger
 
 IR_PIN = 18
 
 
-class OccupiedMonitor:
+class OccupiedMonitor(Monitor):
     is_occupied = False
     now_occupied = False
 
-    def on_install(self):
+    @staticmethod
+    def install():
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(IR_PIN, GPIO.IN)
+        return OccupiedMonitor()
 
-    def on_update(self, triggers):
+    def on_update(self, triggers: Iterable[Trigger]):
         self.now_occupied = bool(GPIO.input(IR_PIN))
         if self.is_occupied != self.now_occupied:
             self.is_occupied = self.now_occupied

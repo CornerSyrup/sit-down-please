@@ -1,14 +1,17 @@
 import time
+from typing import Iterable
+from core import Monitor, Trigger
 
 
-class TimeMonitor:
+class TimeMonitor(Monitor):
     last_sec = int(time.time())
     curr_sec = 0
 
+    @staticmethod
     def install():
         return TimeMonitor()
 
-    def on_update(self, triggers):
+    def on_update(self, triggers: Iterable[Trigger]) -> None:
         self.last_sec = self.curr_sec
         self.curr_sec = int(time.time())
 
