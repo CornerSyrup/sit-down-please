@@ -2,9 +2,11 @@ lockfileVersion: 5.4
 
 specifiers:
   nuxt: ^3.0.0
+  vuetify: ^3.1.2
 
 dependencies:
   nuxt: 3.0.0
+  vuetify: 3.1.2
 
 packages:
 
@@ -4474,6 +4476,23 @@ packages:
       '@vue/runtime-dom': 3.2.45
       '@vue/server-renderer': 3.2.45_vue@3.2.45
       '@vue/shared': 3.2.45
+    dev: false
+
+  /vuetify/3.1.2:
+    resolution: {integrity: sha512-vzxfVc1KlEmZ6tHjmrKCt25rKL6YkakbvQAZ0f/s03kHd0pjXKX4pcWuYgA5mZz4yrfZh/cRHvgGt+7A9CXOVg==}
+    engines: {node: ^12.20 || >=14.13}
+    peerDependencies:
+      vite-plugin-vuetify: ^1.0.0-alpha.12
+      vue: ^3.2.0
+      vue-i18n: ^9.0.0
+      webpack-plugin-vuetify: ^2.0.0-alpha.11
+    peerDependenciesMeta:
+      vite-plugin-vuetify:
+        optional: true
+      vue-i18n:
+        optional: true
+      webpack-plugin-vuetify:
+        optional: true
     dev: false
 
   /wcwidth/1.0.1:
