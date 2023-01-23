@@ -1,6 +1,9 @@
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
+import { aliases, mdi } from "vuetify/iconsets/mdi";
 import { createVuetify } from "vuetify/lib/framework.mjs";
+
+import "vuetify/styles";
 
 // Container colors are not used, but still keep for future.
 // Color palettes are calculated with MD3 Theme builder.
@@ -90,6 +93,7 @@ const vuetify = createVuetify({
   components,
   directives,
   theme: { themes: { light, dark } },
+  icons: { defaultSet: "mdi", aliases, sets: { mdi } },
 });
 
 export default defineNuxtPlugin((nuxtApp) => nuxtApp.vueApp.use(vuetify));
