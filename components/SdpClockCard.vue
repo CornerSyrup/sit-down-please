@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" min-width="350">
+  <v-card class="mx-auto" min-width="350" min-height="200">
     <v-card-item title="Current Time" />
     <v-card-text class="py-0">
       <v-row align="center" no-gutters>
