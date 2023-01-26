@@ -68,11 +68,13 @@
         force: true
 
     - name: Install NPM dependency
-      ansible.builtin.command:
+      ansible.builtin.shell:
+        chdir: "{{ deploy_dest }}/software"
         cmd: pnpm install --prod
 
     - name: Start web server
       ansible.builtin.shell:
+        chdir: "{{ deploy_dest }}/software"
         cmd: |
           pnpm build
           pnpm start
@@ -81,6 +83,7 @@
       tags:
         - execution
       ansible.builtin.shell:
+        chdir: "{{ deploy_dest }}/firmware"
         cmd: |
           python3 {{ deploy_dest }}/main.py &
           echo $!
