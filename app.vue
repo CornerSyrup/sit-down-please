@@ -1,12 +1,25 @@
 <template>
-  <v-app>
+  <v-app :theme="theme ? 'light' : 'dark'">
     <v-app-bar color="primary" density="compact" title="Sit Down Please">
       <template #prepend>
         <v-app-bar-nav-icon @click="rail = !rail" />
       </template>
 
       <template #append>
-        <v-btn icon="mdi-dots-vertical" />
+        <v-menu open-on-hover>
+          <template v-slot:activator="{ props }">
+            <v-btn icon="mdi:mdi-dots-vertical" v-bind="props" />
+          </template>
+
+          <v-list>
+            <v-list-item
+              :prepend-icon="`mdi:mdi-weather-${theme ? 'night' : 'sunny'}`"
+              @click="theme = !theme"
+            >
+              Theme
+            </v-list-item>
+          </v-list>
+        </v-menu>
       </template>
     </v-app-bar>
 
@@ -28,6 +41,8 @@
 import { ref } from "vue";
 
 const rail = ref(true);
+
+const theme = ref(true);
 </script>
 
 <style>
