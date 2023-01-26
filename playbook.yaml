@@ -67,6 +67,16 @@
         version: "{{ deploy_version | default('HEAD') }}"
         force: true
 
+    - name: Install NPM dependency
+      ansible.builtin.command:
+        cmd: pnpm install --prod
+
+    - name: Start web server
+      ansible.builtin.shell:
+        cmd: |
+          pnpm build
+          pnpm start
+
     - name: Start daemon
       tags:
         - execution

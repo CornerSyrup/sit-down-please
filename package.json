@@ -1,0 +1,31 @@
+{
+  "name": "sit-down-please",
+  "version": "0.1.0",
+  "description": "図書館やネットカフェなど座席の貸し切りサービスのための IoT ソフトウェア",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "start": "nuxt start",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KleinChiu/sit-down-please.git"
+  },
+  "keywords": [],
+  "author": "Klein ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KleinChiu/sit-down-please/issues"
+  },
+  "homepage": "https://github.com/KleinChiu/sit-down-please#readme",
+  "dependencies": {
+    "nuxt": "^3.0.0",
+    "vuetify": "^3.1.2"
+  }
+}
