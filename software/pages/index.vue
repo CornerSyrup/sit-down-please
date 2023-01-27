@@ -1,12 +1,11 @@
 <template>
   <sdp-clock-card :temp="36" :humid="60" />
   <sdp-occupied-card :occupied="occupied" />
-  <sdp-time-elapsed-card :since="status?.seat ?? Date.now()" />
+  <sdp-time-elapsed-card :since="status?.seat ?? 0" />
 </template>
 
 <script lang="ts">
-const workIcon =
-  "https://cdn-icons-png.flaticon.com/512/1256/1256723.png?w=740&t=st=1674800504~exp=1674801104~hmac=7c27f722d29c5ad6ad6e8d7bc5dc605b97657f3615af6009b572bcbcdd5685b7";
+const workIcon = "https://cdn-icons-png.flaticon.com/512/9390/9390783.png";
 </script>
 
 <script setup lang="ts">
