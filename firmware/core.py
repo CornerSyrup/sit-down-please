@@ -1,6 +1,7 @@
+import json
 from abc import ABC, abstractmethod
 from glob import glob
-from typing import Iterable
+from typing import Any, Iterable
 
 
 def load_modules(group: str):
@@ -20,6 +21,24 @@ def load_modules(group: str):
             ),
         )
     )
+
+
+def read_data(file: str) -> dict[str, Any]:
+    try:
+        return json.load(open(f"data/{file}.json", "r"))
+    except:
+        open(f"data/{file}.json", "x")
+        return {}
+
+
+def write_data(file: str, data: dict[str, Any]) -> None:
+    return json.dump(data, open(f"data/{file}.json", "w"))
+
+
+def set_data(file: str, key: str, value: Any) -> None:
+    data = read_data(file)
+    data[key] = value
+    return write_data(file, data)
 
 
 class Installable(ABC):

@@ -1,4 +1,5 @@
-from core import Trigger
+from core import Trigger, set_data, read_data
+import time
 
 
 class SeatTriggers(Trigger):
@@ -7,10 +8,13 @@ class SeatTriggers(Trigger):
         return SeatTriggers()
 
     def on_occupied(self):
-        print("now occupied")
+        set_data("status", "seat", int(time.time()))
 
     def on_available(self):
-        print("now available")
+        last = read_data('status')['leave']
+        now = int(time.time())
+        if now - last > 10:
+            set_data("status", "leave", int(time.time()))
 
     def on_second(self, second: int):
-        print(second)
+        pass

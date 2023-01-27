@@ -1,6 +1,6 @@
 from threading import Thread
 
-from flask import Flask, send_file
+from flask import Flask, send_from_directory
 
 from core import load_modules
 
@@ -20,6 +20,6 @@ Thread(target=daemon, daemon=True)
 app = Flask("sit-down-please")
 
 
-@app.route("/")
+@app.route("/api")
 def status():
-    return send_file("data/status.json")
+    return send_from_directory("data", "status.json")
