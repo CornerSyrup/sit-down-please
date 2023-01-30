@@ -491,4 +491,8 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/git,windows,macos,visualstudiocode,python,flask,node,nuxtjs
 
+# Data directory for firmware
 firmware/data/
+
+# Build destination for software
+software/.output/
