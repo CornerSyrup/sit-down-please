@@ -1,4 +1,8 @@
 {
+  "app": {
+    "theme": "テーマ",
+    "switch-language": "English"
+  },
   "component": {
     "clock": {
       "title": "現在時刻"
