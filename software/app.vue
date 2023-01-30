@@ -18,6 +18,12 @@
             >
               Theme
             </v-list-item>
+            <v-list-item
+              prepend-icon="mdi:mdi-translate"
+              @click="setLocale(locale == 'en' ? 'ja' : 'en')"
+            >
+              Language
+            </v-list-item>
           </v-list>
         </v-menu>
       </template>
@@ -39,6 +45,10 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+
+import { useI18n } from "#imports";
+
+const { locale, setLocale } = useI18n();
 
 const rail = ref(true);
 
