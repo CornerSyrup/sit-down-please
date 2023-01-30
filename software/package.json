@@ -1,6 +1,5 @@
 {
   "name": "sit-down-please",
-  "version": "0.1.0",
   "description": "図書館やネットカフェなど座席の貸し切りサービスのための IoT ソフトウェア",
   "directories": {
     "doc": "docs"
