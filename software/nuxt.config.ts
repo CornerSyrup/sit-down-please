@@ -16,6 +16,7 @@ export default defineNuxtConfig({
         },
         { href: "manifest.webmanifest", rel: "manifest" },
       ],
+      script: [{ src: "index.js" }],
     },
   },
   build: {
