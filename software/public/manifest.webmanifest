@@ -1,0 +1,35 @@
+{
+  "name": "Sit Down Please",
+  "short_name": "SDP",
+  "theme_color": "#006684",
+  "background_color": "#fbfcfe",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "images/icon-144.png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "images/icon-96.png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "images/icon-48.png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "images/icon-32.png",
+      "sizes": "32x32"
+    }
+  ]
+}

@@ -16,7 +16,13 @@
               :prepend-icon="`mdi:mdi-weather-${theme ? 'night' : 'sunny'}`"
               @click="theme = !theme"
             >
-              Theme
+              {{ t("app.theme") }}
+            </v-list-item>
+            <v-list-item
+              prepend-icon="mdi:mdi-translate"
+              @click="setLocale(locale == 'en' ? 'ja' : 'en')"
+            >
+              {{ t("app.switch-language") }}
             </v-list-item>
           </v-list>
         </v-menu>
@@ -39,6 +45,11 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+
+import { useI18n } from "#imports";
+import { MessageSchema } from "assets/locales";
+
+const { locale, setLocale, t } = useI18n<MessageSchema, "en">();
 
 const rail = ref(true);
 
