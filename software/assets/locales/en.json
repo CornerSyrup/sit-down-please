@@ -1,1 +1,17 @@
-{}
+{
+  "component": {
+    "clock": {
+      "title": "Current Time"
+    },
+    "status": {
+      "title": "Status",
+      "status": {
+        "occupied": "Occupied",
+        "available": "Available"
+      }
+    },
+    "time-elapsed": {
+      "title": "Elapsed"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 <template>
   <v-card class="mx-auto" min-width="350" min-height="200">
-    <v-card-item title="Current Time" />
+    <v-card-item :title="t('component.clock.title')" />
     <v-card-text class="py-0">
       <v-row align="center" no-gutters>
         <v-col class="text-h2 text-secondary" cols="8">
@@ -31,12 +31,17 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from "#imports";
+
+import { MessageSchema } from "assets/locales";
 import { useCurrentTime } from "../composition";
 
 defineProps<{
   temp: number;
   humid: number;
 }>();
+
+const { t } = useI18n<{ message: MessageSchema }>();
 
 const { currentTime: now } = useCurrentTime();
 </script>
