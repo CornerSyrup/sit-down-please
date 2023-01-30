@@ -1,6 +1,6 @@
 <template>
   <v-card class="mx-auto" min-width="350" min-height="200">
-    <v-card-item title="Elapsed" />
+    <v-card-item :title="t('component.time-elapsed.title')" />
     <v-card-text class="py-0">
       <v-row align="center" justify="center" no-gutters>
         <v-col class="text-h3 text-secondary" cols="8">
@@ -23,11 +23,16 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from "#imports";
+
+import { MessageSchema } from "assets/locales";
 import { useCurrentTime } from "~~/composition";
 
 const props = defineProps<{
   since: number;
 }>();
+
+const { t } = useI18n<{ message: MessageSchema }>();
 
 const { currentTime } = useCurrentTime();
 const elapse = computed(

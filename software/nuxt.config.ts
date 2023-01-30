@@ -1,5 +1,7 @@
 import { defineNuxtConfig } from "nuxt/config";
 
+import messages from "./assets/locales";
+
 export default defineNuxtConfig({
   app: {
     head: {
@@ -17,5 +19,14 @@ export default defineNuxtConfig({
   },
   build: {
     transpile: ["vuetify"],
+  },
+  modules: ["@nuxtjs/i18n"],
+  i18n: {
+    vueI18n: {
+      legacy: false,
+      locale: "ja",
+      fallbackLocale: "en",
+      messages,
+    },
   },
 });
