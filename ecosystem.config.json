@@ -1,0 +1,23 @@
+{
+  "apps": [
+    {
+      "name": "sdp-firmware",
+      "cwd": "firmware",
+      "script": "flask",
+      "args": ["run", "--host", "0.0.0.0"],
+      "env": {
+        "FLASK_APP": "app.py"
+      }
+    },
+    {
+      "name": "sdp-software",
+      "cwd": "software",
+      "script": "node_modules/nuxt/bin/nuxt.mjs",
+      "args": "start",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": 8000
+      }
+    }
+  ]
+}

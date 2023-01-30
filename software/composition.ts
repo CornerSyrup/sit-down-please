@@ -15,7 +15,7 @@ export const useStatus = () => {
   const status = ref<{ seat: number; leave: number }>();
 
   const updateStatus = () =>
-    fetch("http://localhost:3000/api")
+    fetch("http://localhost:5000/api")
       .then((res) => res.json())
       .then((data) => (status.value = data));
 
