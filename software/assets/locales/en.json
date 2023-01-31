@@ -1,0 +1,21 @@
+{
+  "app": {
+    "theme": "Theme",
+    "switch-language": "日本語"
+  },
+  "component": {
+    "clock": {
+      "title": "Current Time"
+    },
+    "status": {
+      "title": "Status",
+      "status": {
+        "occupied": "Occupied",
+        "available": "Available"
+      }
+    },
+    "time-elapsed": {
+      "title": "Elapsed"
+    }
+  }
+}

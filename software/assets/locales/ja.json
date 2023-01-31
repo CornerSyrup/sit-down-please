@@ -1,0 +1,21 @@
+{
+  "app": {
+    "theme": "テーマ",
+    "switch-language": "English"
+  },
+  "component": {
+    "clock": {
+      "title": "現在時刻"
+    },
+    "status": {
+      "title": "状態",
+      "status": {
+        "occupied": "在席",
+        "available": "空席"
+      }
+    },
+    "time-elapsed": {
+      "title": "経過時間"
+    }
+  }
+}

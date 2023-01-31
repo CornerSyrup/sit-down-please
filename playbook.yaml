@@ -1,0 +1,98 @@
+---
+- name: Gather information for installation
+  hosts: pies
+  tags:
+    - probe
+  tasks:
+    - name: Gather the packages facts
+      ansible.builtin.package_facts:
+        manager: apt
+
+    - name: Check whether PNPM is installed
+      tags:
+        - pnpm
+      ansible.builtin.command:
+        cmd: which pnpm
+      register: which_pnpm
+      changed_when: false
+      failed_when: false
+
+- name: Install required packages on pies
+  hosts: pies
+  tags:
+    - install
+  tasks:
+    - name: Install Git
+      ansible.builtin.apt:
+        name: git
+        state: present
+      become: true
+      when: "'git' not in ansible_facts.packages"
+
+    - name: Install NodeJS
+      ansible.builtin.apt:
+        name: nodejs
+        state: present
+      become: true
+      when: "'nodejs' not in ansible_facts.packages"
+
+    - name: Install PNPM
+      tags:
+        - pnpm
+      ansible.builtin.shell:
+        cmd: wget -qO- https://get.pnpm.io/install.sh | sh -
+      changed_when: true
+      when: (which_pnpm.rc | default(1)) != 0
+
+- name: Deploy program
+  hosts: pies
+  tags:
+    - deploy
+  tasks:
+    - name: Clone program from local repository
+      tags:
+        - local
+      ansible.builtin.git:
+        repo: "{{ src_repo }}"
+        dest: "{{ deploy_dest }}"
+        version: "{{ deploy_version | default('HEAD') }}"
+        force: true
+
+    - name: Clone program from Github repository
+      tags:
+        - remote
+      ansible.builtin.git:
+        repo: https://github.com/KleinChiu/sit-down-please.git
+        dest: "{{ deploy_dest }}"
+        version: "{{ deploy_version | default('HEAD') }}"
+        force: true
+
+    - name: Install NPM dependency
+      ansible.builtin.shell:
+        chdir: "{{ deploy_dest }}/software"
+        cmd: pnpm install --prod
+
+    - name: Start web server
+      ansible.builtin.shell:
+        chdir: "{{ deploy_dest }}/software"
+        cmd: |
+          pnpm build
+          pnpm start
+
+    - name: Start daemon
+      tags:
+        - execution
+      ansible.builtin.shell:
+        chdir: "{{ deploy_dest }}/firmware"
+        cmd: |
+          python3 {{ deploy_dest }}/main.py &
+          echo $!
+      register: daemon
+      changed_when: false
+
+    - name: Check up state
+      tags:
+        - execution
+      ansible.builtin.shell:
+        cmd: "ps | grep {{ daemon.stdout }}"
+      changed_when: false

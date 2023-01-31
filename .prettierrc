@@ -1,0 +1,12 @@
+{
+  "useTabs": false,
+  "endOfLine": "lf",
+  "tabWidth": 2,
+  "vueIndentScriptAndStyle": false,
+  "singleQuote": false,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "bracketSameLine": false,
+  "trailingComma": "es5",
+  "proseWrap": "preserve"
+}
