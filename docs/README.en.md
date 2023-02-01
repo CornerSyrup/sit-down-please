@@ -2,8 +2,6 @@
 
 [日本語](./README.md)
 
-![](./sit-down-please.webp)
-
 IoT software for sit rental services, like library and net cafe.
 
 ## Technologies
