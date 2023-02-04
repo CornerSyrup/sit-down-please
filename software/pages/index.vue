@@ -11,8 +11,6 @@ import SdpTimeElapsedCard from "~~/components/SdpTimeElapsedCard.vue";
 
 import logo from "assets/logo.png";
 
-import { useStatus } from "../composition";
-
 const { status } = useStatus();
 
 const occupied = computed(() =>

@@ -26,7 +26,6 @@
 import { useI18n } from "#imports";
 
 import { MessageSchema } from "assets/locales";
-import { useCurrentTime } from "~~/composition";
 
 const props = defineProps<{
   since: number;
